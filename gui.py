@@ -29,19 +29,23 @@ def window():
     # Create tabs
     tab1	= wid.QWidget()	
     tab2	= wid.QWidget()
-    tab3	= wid.QWidget()
     tab4	= wid.QWidget()
     
     tabs.resize(1200, 800)
     
     #Primera Tab
-    tab_1	= wid.QVBoxLayout()
-    pushButton1 = wid.QPushButton("Start")
-    pushButton2 = wid.QPushButton("Settings")
-    pushButton3 = wid.QPushButton("Stop")
-    tab_1.addWidget(pushButton1)
-    tab_1.addWidget(pushButton2)
-    tab_1.addWidget(pushButton3)
+    tab_1 = wid.QVBoxLayout()
+    licence = ( "Trabajo de Inteligencia Artificial" +
+              " \n Sistema experto para la deteccion de transtornos psicologicos mas comunes"+
+              "\n \n Alumnos: \n" +
+              "Gabriel Ramirez Reategui \n" +
+              "Ricardo Andre Bueno Carrasco \n" +
+              "Franco Pastor  \n"
+              )
+    text0 = wid.QLabel(licence)
+    text0.setWordWrap(True)
+    tab_1.addWidget(text0)
+    tab1.setLayout(tab_1)
     
     
     #Segunda Tab
@@ -130,9 +134,6 @@ def window():
             tab_2.addWidget(checkboxs[n + i*22],n,i)
     tab_2.addWidget(checkboxs[66],21,3)
     
-    tab_2.addWidget(pushButton1,10,4)
-    tab_2.addWidget(pushButton2,11,4)
-    tab_2.addWidget(pushButton3,12,4)
     
     tab2.setLayout(tab_2)
     
@@ -165,29 +166,32 @@ def window():
         pass
     
     pushButton1.clicked.connect(selector)
-     #Tercera Tab
-    tab_3	= wid.QVBoxLayout()
-    pushButton1 = wid.QPushButton("Start")
-    pushButton2 = wid.QPushButton("Settings")
-    pushButton3 = wid.QPushButton("Stop")
-    tab_3.addWidget(pushButton1)
-    tab_3.addWidget(pushButton2)
-    tab_3.addWidget(pushButton3)
-    tab3.setLayout(tab_3)
-    
     #Cuarta Tab
+    
+    tab_4 = wid.QVBoxLayout()
+    licence = ( "El sistema experto asi como el codigo del mismo se libera bajo la licencia de codigo Abierto para cualquier persona pueda leer, modificar y reutilizar el codigo" +
+              " \n Este software fue desarrollado en conjunto por los alumnos de la universidad de ciencias aplicadas"+
+              " para el curso de Inteligencia Artificial de la carrera de Ciencias de la Computacion" +
+              "\n \n Alumnos: \n" +
+              "Gabriel Ramirez Reategui \n" +
+              "Ricardo Andre Bueno Carrasco \n" +
+              "Franco Pastor  \n"
+              )
+    text1 = wid.QLabel(licence)
+    text1.setWordWrap(True)
+    tab_4.addWidget(text1)
+    tab4.setLayout(tab_4)
     
     
     ## information
     l1 = wid.QLabel()
-    l1.setText("Agrega la cantidad de puntos hasta que desee generar el spline")
+    l1.setText("Entrar a la tabla Sistema Experto, seleccionar sintomas y hacer clic en S.E para probar, no olvidar poner nombre")
     l1.setGeometry(200, 200, 600, 600)
     tab_1.addWidget(l1)
     tab1.setLayout(tab_1)   
     # Add tabs
     tabs.addTab(tab1,"Introduccion")
     tabs.addTab(tab2,"Sistema Experto")
-    tabs.addTab(tab3,"enfermedades y sintomas")
     tabs.addTab(tab4,"licencia") 
     
     

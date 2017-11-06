@@ -55,7 +55,7 @@ A.add_rule("enfermedad","postraumatico") #Done
 A.add_rule("humor_depresivo_anormal","depresion")
 A.add_rule("perdida_de_interes","depresion")
 A.add_rule("disminucion_de_energia","depresion")
-
+#cualquiera
 A.add_rule("perdida_de_confianza","depresion")
 A.add_rule("culpa_excesiva","depresion")
 A.add_rule("pensamientos_suicidas","depresion")
@@ -144,7 +144,7 @@ def tiene_toc(value):
 A.add_rule("miedo_atencion", "fobia_social")
 A.add_rule("miedo_humillacion", "fobia_social")
 A.add_rule("miedo_social", "fobia_social")
-
+#y cualquiera de las siguietnes
 A.add_rule("palpitaciones", "fobia_social")
 A.add_rule("sudoracion", "fobia_social")
 A.add_rule("temblores", "fobia_social")
@@ -157,7 +157,7 @@ A.add_rule("mareos", "fobia_social")
 A.add_rule("miedo_muerte", "fobia_social")
 A.add_rule("escalofrios", "fobia_social")
 A.add_rule("hormigueo", "fobia_social")
-
+#y cualquiera de las siguientes
 A.add_rule("ruborizacion", "fobia_social")
 A.add_rule("miedo_vomitar", "fobia_social")
 A.add_rule("necesidad_orinar_o_defecar", "fobia_social")
@@ -195,7 +195,7 @@ A.add_rule("miedo_multitudes", "agorafobia")
 A.add_rule("miedo_lugares_publicos", "agorafobia")
 A.add_rule("miedo_viajar_solo", "agorafobia")
 A.add_rule("miedo_viajar_lejos", "agorafobia")
-
+#Alguna de las siguientes
 A.add_negation("alucinaciones_persistentes", "agorafobia")
 A.add_negation("ideas_delirantes", "agorafobia")
 A.add_negation("tiene_esquizofrenia", "agorafobia")
@@ -257,7 +257,7 @@ def tiene_cleptomania(value):
             (A.exist("robos_sin_ganancia",value) and A.exist("alivio_de_tension_al_robar",value)) or
             (A.exist("impulso_robar",value) and A.exist("alivio_de_tension_al_robar",value)))
     return answer
-
+ 
 
 #ludopatia
 A.add_rule("jugar_sin_provecho_economico", "ludopatia")
@@ -272,7 +272,8 @@ def tiene_ludopatia(value):
             (A.exist("jugar_sin_provecho_economico",value) and 
              ((A.exist("impulso_de_jugar",value) and(A.exist("repitencia_perjudicial",value) or A.exist("incapacidad_dejar_jugar",value))) or 
               (A.exist("incapacidad_dejar_jugar",value) and A.exist("preocupacion_por_juego",value)))) or
-             ((A.exist("repitencia_perjudicial",value) and A.exist("incapacidad_dejar_jugar",value)) and (A.exist("impulso_de_jugar",value) and A.exist("preocupacion_por_juego",value))
+             ((A.exist("repitencia_perjudicial",value) and A.exist("incapacidad_dejar_jugar",value)) and (A.exist("impulso_de_jugar",value) and
+               A.exist("preocupacion_por_juego",value))
              ) or
              (A.exist("impulso_de_jugar",value) and A.exist("incapacidad_dejar_jugar",value) and A.exist("preocupacion_por_juego",value))
             )
