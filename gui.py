@@ -8,7 +8,8 @@ Created on Sun Nov  5 10:19:23 2017
 import qtpy.QtGui as gui
 import qtpy.QtWidgets as wid
 import sys
-
+import logic as lg
+import numpy as np
 
 
 def exist(ar,val): #Detect if X value already exist
@@ -31,7 +32,7 @@ def window():
     tab3	= wid.QWidget()
     tab4	= wid.QWidget()
     
-    tabs.resize(800, 800)
+    tabs.resize(1200, 800)
     
     #Primera Tab
     tab_1	= wid.QVBoxLayout()
@@ -44,22 +45,126 @@ def window():
     
     
     #Segunda Tab
-    tab_2	= wid.QVBoxLayout()
+    tab_2	= wid.QGridLayout()
     #textbox
     lx = wid.QLabel()
-    lx.setText("Inserte valor en X: ")
+    lx.setText("Nombre del Paciente:")
     
-    pushButton1 = wid.QPushButton("Start")
-    pushButton2 = wid.QPushButton("Settings")
-    pushButton3 = wid.QPushButton("Stop")
-    tab_2.addWidget(lx)
-    tab_2.addWidget(pushButton1)
-    tab_2.addWidget(pushButton2)
-    tab_2.addWidget(pushButton3)
+    tb = wid.QLineEdit()
+    tab_2.addWidget(tb,0,4)
+    pushButton1 = wid.QPushButton("Usar S.E.")
+    
+    tab_2.addWidget(lx,0,3)
+    checkboxs = []
+    checkboxs.append(wid.QCheckBox("preocupacion_por_imagen"))
+    checkboxs.append(wid.QCheckBox("perdida_de_interes"))
+    checkboxs.append(wid.QCheckBox("dificultad_respiracion"))
+    checkboxs.append(wid.QCheckBox("robos_sin_ganancia"))
+    checkboxs.append(wid.QCheckBox("necesidad_orinar_o_defecar"))
+    checkboxs.append(wid.QCheckBox("humor_depresivo_anormal"))
+    checkboxs.append(wid.QCheckBox("alucinaciones_persistenes"))
+    checkboxs.append(wid.QCheckBox("incapacidad_recordar_acontecimiento"))
+    checkboxs.append(wid.QCheckBox("transtorno_endocrino"))
+    checkboxs.append( wid.QCheckBox("autoinduccion_perdida_peso"))
+    checkboxs.append( wid.QCheckBox("escalofrios"))
+    checkboxs.append( wid.QCheckBox("intencion_de_resistencia"))
+    checkboxs.append( wid.QCheckBox("bajo_peso"))
+    checkboxs.append( wid.QCheckBox("obsesiones"))
+    checkboxs.append( wid.QCheckBox("pensamientos_suicidas"))
+    checkboxs.append( wid.QCheckBox("ideas_de_control"))
+    checkboxs.append( wid.QCheckBox("sequedad_boca"))
+    checkboxs.append( wid.QCheckBox("jugar_sin_provecho_economico"))
+    checkboxs.append( wid.QCheckBox("discurso_incoherente"))
+    checkboxs.append( wid.QCheckBox("dolor_pecho"))
+    checkboxs.append( wid.QCheckBox("compulsiones"))
+    checkboxs.append( wid.QCheckBox("sensacion_ahogo"))
+    checkboxs.append( wid.QCheckBox("preocupacion_por_juego"))
+    checkboxs.append( wid.QCheckBox("miedo_muerte"))
+    checkboxs.append( wid.QCheckBox("disminucion_de_energia"))
+    checkboxs.append(wid.QCheckBox("agitacion_o_enlentecimiento"))
+    checkboxs.append(wid.QCheckBox("alivio_de_tension_al_robar"))
+    checkboxs.append(wid.QCheckBox("disgusto"))
+    checkboxs.append(wid.QCheckBox("hormigueo"))
+    checkboxs.append(wid.QCheckBox("distorcion_imagen_corporal"))
+    checkboxs.append(wid.QCheckBox("ideas_de_poder"))
+    checkboxs.append(wid.QCheckBox("temblores"))
+    checkboxs.append(wid.QCheckBox("recuerdos_recurrentes_acontecimiento"))
+    checkboxs.append(wid.QCheckBox("repitencia_perjudicial"))
+    checkboxs.append(wid.QCheckBox("alteracion_de_sueno"))
+    checkboxs.append(wid.QCheckBox("indecision"))
+    checkboxs.append(wid.QCheckBox("enfermedad"))
+    checkboxs.append(wid.QCheckBox("miedo_social"))
+    checkboxs.append(wid.QCheckBox("miedo_multitudes"))
+    checkboxs.append(wid.QCheckBox("cambio_apetito"))
+    checkboxs.append(wid.QCheckBox("evitacion_similar_recuerdo"))
+    checkboxs.append(wid.QCheckBox("hipersensibilidad_psicologica"))
+    checkboxs.append(wid.QCheckBox("miedo_humillacion"))
+    checkboxs.append(wid.QCheckBox("conductas_catatonicas"))
+    checkboxs.append(wid.QCheckBox("miedo_humillacion"))
+    checkboxs.append(wid.QCheckBox("miedo_vomitar"))
+    checkboxs.append(wid.QCheckBox("miedo_humillacion"))
+    checkboxs.append(wid.QCheckBox("o_c_reiteradas_y_desagradables"))
+    checkboxs.append(wid.QCheckBox("sudoracion"))
+    checkboxs.append(wid.QCheckBox("palpitaciones"))
+    checkboxs.append(wid.QCheckBox("situacion_extrema_estres"))
+    checkboxs.append(wid.QCheckBox("miedo_viajar_lejos"))
+    checkboxs.append(wid.QCheckBox("impulso_robar"))
+    checkboxs.append(wid.QCheckBox("miedo_viajar_solo"))
+    checkboxs.append(wid.QCheckBox("sintomas_negativos"))
+    checkboxs.append(wid.QCheckBox("miedo_lugares_publicos"))
+    checkboxs.append(wid.QCheckBox("perdida_de_confianza"))
+    checkboxs.append(wid.QCheckBox("ruborizacion"))
+    checkboxs.append(wid.QCheckBox("ideas_delirantes"))
+    checkboxs.append(wid.QCheckBox("impulso_de_jugar"))
+    checkboxs.append(wid.QCheckBox("mareos"))
+    checkboxs.append(wid.QCheckBox("preocupacion_por_peso"))
+    checkboxs.append(wid.QCheckBox("alteracion_del_pensamiento"))
+    checkboxs.append(wid.QCheckBox("incapacidad_dejar_jugar"))
+    checkboxs.append(wid.QCheckBox("culpa_excesiva"))
+    checkboxs.append(wid.QCheckBox("preocupacion_por_peso"))
+    checkboxs.append(wid.QCheckBox("miedo_atencion"))
+    
+    #we add all the checkboks
+    for i in range(0,3):
+        for n in range(0,22):
+            tab_2.addWidget(checkboxs[n + i*22],n,i)
+    tab_2.addWidget(checkboxs[66],21,3)
+    
+    tab_2.addWidget(pushButton1,10,4)
+    tab_2.addWidget(pushButton2,11,4)
+    tab_2.addWidget(pushButton3,12,4)
     
     tab2.setLayout(tab_2)
     
+    def selector():
+        #for i in range(0,np.size(checkboxs,0)):
+        value = tb.text()
+        print(value)
+        for i in range(0,np.size(checkboxs,0)):
+            if(checkboxs[i].isChecked()):
+                print("Se ha agregado: ", checkboxs[i].text())
+                lg.A.add_rule(checkboxs[i].text(),value)
+        
+        a = lg.tiene_depresion(value)
+        b = lg.tiene_esquizofrenia(value)
+        c = lg.tiene_toc(value)
+        d = lg.tiene_fobia_social(value)
+        e = lg.tiene_agorafobia(value)
+        f = lg.tiene_anorexia(value)
+        g = lg.tiene_cleptomania(value)
+        h = lg.tiene_ludopatia(value)
+        i = lg.tiene_pos_traumatico(value)
+        print(c)
+        text = "Los resultados son: "+(a*"Depresion" + " " + b*"esquizofrenia " + c*"toc "+ d*"Fobia Social " + e*"agorafobia " + f*"anorexia" + g*"cleptomania " + h*"ludopatia " + i*"Estres postraumatico")
+        msg = wid.QMessageBox()
+        msg.setIcon(wid.QMessageBox.Information)
+        msg.setText("Usted puede tener las siguientes enfermedades: ")
+        msg.setWindowTitle("Resultado")
+        msg.setDetailedText(text)
+        msg.exec_()
+        pass
     
+    pushButton1.clicked.connect(selector)
      #Tercera Tab
     tab_3	= wid.QVBoxLayout()
     pushButton1 = wid.QPushButton("Start")

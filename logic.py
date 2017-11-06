@@ -133,10 +133,10 @@ A.add_negation("esquizofrenia","toc")
 
 def tiene_toc(value):
     answer = (
-            (A.exist("obsesiones",value) or A.exist("obsesiones")) and
-            A.exist("o_c_reiteradas_y_desagradables") and
-            A.exist("intencion_de_resistencia") and
-            A.exist("disgusto") 
+            (A.exist("obsesiones",value) or A.exist("obsesiones",value)) and
+            A.exist("o_c_reiteradas_y_desagradables",value) and
+            A.exist("intencion_de_resistencia",value) and
+            A.exist("disgusto",value) 
             )
     return answer
 
